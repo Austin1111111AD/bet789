@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMBET789 - Betting System</title>
+    <title>MMBET789</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -89,7 +89,6 @@
 
         .frontend-content {
             flex: 1;
-            padding: 20px;
             overflow-y: auto;
         }
 
@@ -154,6 +153,223 @@
             margin-bottom: 3px;
         }
 
+        /* --- Live Odds Specific Styles (iBet789-like) --- */
+
+        .live-odds-layout {
+            display: flex;
+            height: 100%;
+        }
+
+        /* Odds Sidebar (Left Navigation) */
+        .odds-sidebar {
+            width: 250px;
+            background-color: var(--frontend-header); 
+            color: var(--frontend-text);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
+            flex-shrink: 0; 
+            padding: 15px 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 15px 10px 15px;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+        }
+
+        .sport-nav-list {
+            list-style: none;
+        }
+
+        .sport-nav-list li a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--frontend-text);
+            text-decoration: none;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+
+        .sport-nav-list li a i {
+            margin-right: 10px;
+            width: 20px; 
+        }
+
+        .sport-nav-list li.active a {
+            background-color: #3e3e3e; 
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+        .sport-nav-list li a:hover:not(.active) {
+            background-color: #333;
+        }
+
+
+        /* Main Odds Content Area */
+        .odds-main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: var(--frontend-bg);
+            overflow-y: auto;
+        }
+
+        .odds-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            color: var(--frontend-text);
+        }
+
+        .odds-filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .odds-filters select, .odds-filters button {
+            padding: 8px 12px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #333;
+            color: var(--light);
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.1s;
+        }
+
+        .odds-filters button:hover {
+            background-color: #4a4a4a;
+        }
+
+        .icon-btn i {
+            margin-right: 5px;
+        }
+
+        /* Odds Table/List Structure */
+        .odds-section {
+            margin-bottom: 30px;
+        }
+
+        .league-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #3e3e3e;
+            padding: 10px 15px;
+            border-radius: 4px 4px 0 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .league-header i {
+            margin-right: 8px;
+        }
+
+        .odds-headers {
+            display: flex;
+            width: 480px; 
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .odds-headers span {
+            width: calc(100% / 3);
+            text-align: center;
+        }
+
+        .match-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+            background-color: #2a2a2a;
+            transition: background-color 0.1s;
+        }
+
+        .match-row:hover {
+            background-color: #353535;
+        }
+
+        .match-info {
+            width: calc(100% - 480px); 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .match-time {
+            color: var(--danger); 
+            font-weight: bold;
+            min-width: 60px;
+        }
+
+        .teams {
+            flex-grow: 1;
+            padding: 0 15px;
+        }
+
+        .team-name {
+            display: block;
+            line-height: 1.4;
+            color: var(--frontend-text);
+        }
+
+        .score {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--accent);
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* Odds Buttons in the main table */
+        .odds-cell {
+            display: flex;
+            width: 160px; 
+            justify-content: space-around;
+        }
+
+        .odd-btn {
+            background-color: #444;
+            color: var(--light);
+            border: 1px solid #555;
+            padding: 6px 4px;
+            margin: 0 2px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            width: 48px; 
+            text-align: center;
+            transition: background-color 0.1s, border-color 0.1s;
+        }
+
+        .odd-btn:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            border-color: var(--accent);
+        }
+
+        /* Specific odds cell widths for a cleaner look */
+        .odds-1x2 .odd-btn {
+            width: 50px;
+        }
+
+        .odds-hdp .hdp-val, .odds-ou .ou-val {
+            width: 40px; 
+            background-color: #333;
+            border-color: #333;
+            cursor: default;
+        }
+
+        .odds-hdp .hdp-odd, .odds-ou .ou-odd {
+            width: 55px; 
+        }
+        
         /* Support Chat Popup */
         .support-chat-popup {
             position: fixed;
@@ -165,7 +381,7 @@
         .support-icon {
             width: 60px;
             height: 60px;
-            background-color: #25d366; /* WhatsApp/Viber Green */
+            background-color: #25d366; 
             color: white;
             border-radius: 50%;
             display: flex;
@@ -213,8 +429,8 @@
             font-size: 20px;
         }
         
-        .tg-color { color: #0088cc; } /* Telegram */
-        .vb-color { color: #7f5195; } /* Viber - approximation */
+        .tg-color { color: #0088cc; } 
+        .vb-color { color: #7f5195; } 
 
 
         /* Admin Panel Styles (From your provided code) */
@@ -285,6 +501,14 @@
             .main-content { margin-left: 70px; }
             .form-row { grid-template-columns: 1fr; }
             .frontend-nav-bar button { flex-basis: 45%; max-width: none; }
+            /* Mobile view for live odds - Stack sidebar and content */
+            .live-odds-layout { flex-direction: column; }
+            .odds-sidebar { width: 100%; height: auto; padding: 10px; }
+            .odds-main-content { padding: 10px; }
+            .match-row { flex-wrap: wrap; }
+            .match-info { width: 100%; margin-bottom: 10px; }
+            .odds-cell { width: 100%; margin-bottom: 5px; }
+            .odds-headers { display: none; } /* Hide headers on mobile */
         }
     </style>
 </head>
@@ -333,7 +557,6 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="skipPasswordChange" style="display: none;">Skip (Not Recommended)</button>
                 <button class="btn btn-primary" id="saveNewPassword">Change Password</button>
             </div>
         </div>
@@ -384,7 +607,7 @@
         </div>
         
         <div class="frontend-nav-bar" id="mainNavBar">
-            <button data-action="live-bet" class="active"><i class="fas fa-futbol"></i> မောင်း / Parlay Odd</button>
+            <button data-action="live-bet" class="active"><i class="fas fa-futbol"></i> Live Odds</button>
             <button data-action="single-bet"><i class="fas fa-hand-pointer"></i> Single Bet</button>
             <button data-action="ht-bet"><i class="fas fa-clock"></i> HT Bet (45 Min)</button>
             <button data-action="ft-bet"><i class="fas fa-flag-checkered"></i> FT Bet (90 Min)</button>
@@ -392,38 +615,48 @@
             <button data-action="financial-logs"><i class="fas fa-money-check-alt"></i> ငွေစာရင်းမှတ်တမ်း</button>
         </div>
 
-        <div class="frontend-content" id="frontendContentArea">
-            <div id="live-bet-content" class="frontend-sub-content active">
-                <h2>Live Matches / Parlay Odd</h2>
-                <p style="color:#aaa; margin-bottom: 15px;">(Mix Parlay အနေဖြင့် ရွေးချယ်နိုင်သည်)</p>
-                <div class="match-card">
-                    <div class="match-header">18:00 | Chelsea vs Man City | Premier League</div>
-                    <div class="odd-row">
-                        <div class="odd-button" onclick="placeBet('Man City Win', 1.95, 'Parlay')">
-                            <div class="odd-label">Man City Win</div>1.95
-                        </div>
-                        <div class="odd-button" onclick="placeBet('Draw', 3.50, 'Parlay')">
-                            <div class="odd-label">Draw</div>3.50
-                        </div>
-                        <div class="odd-button" onclick="placeBet('Chelsea Win', 3.20, 'Parlay')">
-                            <div class="odd-label">Chelsea Win</div>3.20
+        <div class="frontend-content live-odds-layout" id="frontendContentArea" style="padding: 0;">
+            
+            <div id="live-bet-content" class="frontend-sub-content active" style="width: 100%; height: 100%; display: flex;">
+                <aside id="frontend-sidebar" class="odds-sidebar">
+                    <div class="sidebar-header">
+                        <h3>SPORTS</h3>
+                    </div>
+                    <ul id="sportNavList" class="sport-nav-list">
+                        <li class="active"><a href="#" onclick="showSportOdds('Football', this)"><i class="fas fa-futbol"></i> Football (Soccer)</a></li>
+                        <li><a href="#" onclick="showSportOdds('Basketball', this)"><i class="fas fa-basketball-ball"></i> Basketball</a></li>
+                        <li><a href="#" onclick="showSportOdds('Tennis', this)"><i class="fas fa-table-tennis"></i> Tennis</a></li>
+                        <li><a href="#" onclick="showSportOdds('Volleyball', this)"><i class="fas fa-volleyball-ball"></i> Volleyball</a></li>
+                        <li><a href="#" onclick="showSportOdds('IceHockey', this)"><i class="fas fa-hockey-puck"></i> Ice Hockey</a></li>
+                    </ul>
+                </aside>
+
+                <main id="frontend-main-odds" class="odds-main-content">
+                    <div class="odds-header-bar">
+                        <h2 id="oddsMainTitle"><i class="fas fa-futbol"></i> Live Football Odds</h2>
+                        <div class="odds-filters">
+                            <select><option>All Markets</option></select>
+                            <button class="icon-btn"><i class="fas fa-chart-line"></i> In-Play</button>
                         </div>
                     </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-header">20:45 | PSG vs Bayern Munich | Champions League</div>
-                    <div class="odd-row">
-                        <div class="odd-button" onclick="placeBet('Over 2.5', 1.75, 'Parlay')">
-                            <div class="odd-label">Total Over 2.5</div>1.75
+                    
+                    <section id="liveOddsSection" class="odds-section">
+                        <div class="league-header">
+                            <h4><i class="fas fa-trophy"></i> English Premier League</h4>
+                            <div class="odds-headers">
+                                <span>1X2</span>
+                                <span>HDP</span>
+                                <span>O/U</span>
+                            </div>
                         </div>
-                        <div class="odd-button" onclick="placeBet('Under 2.5', 2.10, 'Parlay')">
-                            <div class="odd-label">Total Under 2.5</div>2.10
-                        </div>
-                    </div>
-                </div>
+
+                        <div id="liveMatchesContainer">
+                            </div>
+                    </section>
+                </main>
             </div>
 
-            <div id="single-bet-content" class="frontend-sub-content" style="display: none;">
+            <div id="single-bet-content" class="frontend-sub-content" style="display: none; padding: 20px;">
                 <h2>Single Bet (Home/Away/Over/Under)</h2>
                 <p style="color:#aaa; margin-bottom: 15px;">(တစ်ပွဲချင်းစီကိုသာ ရွေးချယ်နိုင်သည်)</p>
                 <div class="match-card">
@@ -440,7 +673,7 @@
                 </div>
             </div>
 
-            <div id="ht-bet-content" class="frontend-sub-content" style="display: none;">
+            <div id="ht-bet-content" class="frontend-sub-content" style="display: none; padding: 20px;">
                 <h2>HT Bet (First Half 45 Minutes)</h2>
                 <p style="color:#aaa; margin-bottom: 15px;">(ပထမပိုင်း ရလဒ်လောင်းကြေးများ)</p>
                 <div class="match-card">
@@ -453,7 +686,7 @@
                 </div>
             </div>
 
-            <div id="ft-bet-content" class="frontend-sub-content" style="display: none;">
+            <div id="ft-bet-content" class="frontend-sub-content" style="display: none; padding: 20px;">
                 <h2>FT Bet (Second Half 45 Minutes)</h2>
                 <p style="color:#aaa; margin-bottom: 15px;">(ဒုတိယပိုင်းရလဒ် (၄၅ မိနစ်အတွင်း) လောင်းကြေးများ)</p>
                 <div class="match-card">
@@ -466,7 +699,7 @@
                 </div>
             </div>
 
-            <div id="bet-logs-content" class="frontend-sub-content" style="display: none;">
+            <div id="bet-logs-content" class="frontend-sub-content" style="display: none; padding: 20px;">
                 <h2>လောင်းထားသော စာရင်းမှတ်တမ်းများ</h2>
                 <table style="width: 100%; color: var(--frontend-text); text-align: left;">
                     <thead>
@@ -483,7 +716,7 @@
                 </table>
             </div>
 
-            <div id="financial-logs-content" class="frontend-sub-content" style="display: none;">
+            <div id="financial-logs-content" class="frontend-sub-content" style="display: none; padding: 20px;">
                 <h2>ငွေစာရင်းမှတ်တမ်း (Deposit/Withdrawal Logs)</h2>
                 <div class="frontend-actions" style="margin-bottom: 20px; display: flex; gap: 10px;">
                     <button class="btn-success" onclick="openDepositWithdrawModal('Deposit')">ငွေသွင်းမည် (Deposit)</button>
@@ -519,7 +752,7 @@
                     </div>
                     <div class="form-group">
                         <label>Payment Method</label>
-                        <select class="form-control" required>
+                        <select class="form-control" required id="financialMethod">
                             <option value="">Select Method</option>
                             <option value="KBZ Pay">KBZ Pay</option>
                             <option value="Wave Money">Wave Money</option>
@@ -617,15 +850,15 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon bg-success"><i class="fas fa-chart-line"></i></div>
-                            <div class="stat-info"><h3 id="winAmountAdmin">K0.00</h3><p>Win Amount</p></div>
+                            <div class="stat-info"><h3 id="netWinAmount">K0.00</h3><p>Net Win/Loss</p></div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon bg-danger"><i class="fas fa-chart-bar"></i></div>
-                            <div class="stat-info"><h3 id="loseAmountAdmin">K0.00</h3><p>Lose Amount</p></div>
+                            <div class="stat-icon bg-danger"><i class="fas fa-hand-holding-usd"></i></div>
+                            <div class="stat-info"><h3 id="pendingWithdrawals">K0.00</h3><p>Pending Withdrawals</p></div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon bg-warning"><i class="fas fa-users"></i></div>
-                            <div class="stat-info"><h3 id="activeAgentsAdmin">0</h3><p>Active Agents</p></div>
+                            <div class="stat-info"><h3 id="totalActiveUsers">0</h3><p>Total Active Users</p></div>
                         </div>
                     </div>
                     <div class="card">
@@ -667,17 +900,17 @@
                         <div class="card-header"><h3>Odd Management</h3><button class="btn btn-primary" id="addOddBtn">Add New Odd</button></div>
                         <div class="card-body">
                             <div class="tabs">
-                                <div class="tab active" data-subtab="singleOdd">Single Odd</div>
-                                <div class="tab" data-subtab="mixParlay">Mix Parlay</div>
+                                <div class="tab active" data-subtab="singleOdd">Live/Parlay Odds</div>
+                                <div class="tab" data-subtab="mixParlay">Other Bets</div>
                                 <div class="tab" data-subtab="autoOdd">Auto Odd</div>
                             </div>
                             <div id="singleOdd" class="tab-content active">
                                 <table>
-                                    <thead><tr><th>Match</th><th>Home/Away</th><th>Over/Under</th><th>Actions</th></tr></thead>
+                                    <thead><tr><th>ID</th><th>Match</th><th>Home</th><th>Away</th><th>Over</th><th>Under</th><th>Actions</th></tr></thead>
                                     <tbody id="oddsTableAdmin"></tbody>
                                 </table>
                             </div>
-                            <div id="mixParlay" class="tab-content"><p>Mix Parlay odds management interface</p></div>
+                            <div id="mixParlay" class="tab-content"><p>HT Bet, FT Bet, etc. controls.</p></div>
                             <div id="autoOdd" class="tab-content"><p>Auto odd assignment and customization interface</p></div>
                         </div>
                     </div>
@@ -700,7 +933,7 @@
                         <div class="card-header"><h3>Betting Logs</h3><div><button class="btn btn-success" id="refreshBetsBtn">Refresh</button></div></div>
                         <div class="card-body">
                             <table>
-                                <thead><tr><th>Bet ID</th><th>User</th><th>Match</th><th>Bet Type</th><th>Odd</th><th>Amount (K)</th><th>Tax (K)</th><th>Status</th><th>Actions</th></tr></thead>
+                                <thead><tr><th>Bet ID</th><th>User</th><th>Match</th><th>Bet Type</th><th>Odd</th><th>Amount (K)</th><th>Status</th><th>Actions</th></tr></thead>
                                 <tbody id="bettingLogsTableAdmin"></tbody>
                             </table>
                         </div>
@@ -780,10 +1013,10 @@
                         <div class="form-group"><label>Password (Leave blank to not change)</label><input type="password" id="userActionPassword" class="form-control"></div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group"><label>Balance (K)</label><input type="number" id="userActionBalance" class="form-control" value="0" step="0.01"></div>
+                        <div class="form-group"><label>Balance (K)</label><input type="number" id="userActionBalance" class="form-control" value="0" step="1" disabled></div>
                         <div class="form-group"><label>Agent</label><select id="userActionAgent" class="form-control"></select></div>
                     </div>
-                    <div id="moneyActionGroup" style="display: none;">
+                    <div id="moneyActionGroup">
                         <h4 style="margin-top: 15px;">Add/Subtract Money (K)</h4>
                         <div class="form-row">
                             <div class="form-group"><label>Amount</label><input type="number" id="moneyAmount" class="form-control" value="0" step="1"></div>
@@ -804,11 +1037,16 @@
             <div class="modal-header"><h3>Add New Odd</h3><button class="btn btn-danger close-modal">&times;</button></div>
             <div class="modal-body">
                 <form id="oddActionForm">
+                    <input type="hidden" id="currentOddId">
                     <div class="form-group"><label>Match</label><input type="text" id="oddMatch" class="form-control" required></div>
-                    <div class="form-group"><label>Home Team Odd</label><input type="number" id="oddHome" class="form-control" step="0.01" required></div>
-                    <div class="form-group"><label>Away Team Odd</label><input type="number" id="oddAway" class="form-control" step="0.01" required></div>
-                    <div class="form-group"><label>Over Odd (e.g., Over 2.5)</label><input type="number" id="oddOver" class="form-control" step="0.01" required></div>
-                    <div class="form-group"><label>Under Odd (e.g., Under 2.5)</label><input type="number" id="oddUnder" class="form-control" step="0.01" required></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Home Team Odd</label><input type="number" id="oddHome" class="form-control" step="0.01" required></div>
+                        <div class="form-group"><label>Away Team Odd</label><input type="number" id="oddAway" class="form-control" step="0.01" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Over Odd (e.g., Over 2.5)</label><input type="number" id="oddOver" class="form-control" step="0.01" required></div>
+                        <div class="form-group"><label>Under Odd (e.g., Under 2.5)</label><input type="number" id="oddUnder" class="form-control" step="0.01" required></div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -823,6 +1061,7 @@
             <div class="modal-header"><h3>Add New Agent</h3><button class="btn btn-danger close-modal">&times;</button></div>
             <div class="modal-body">
                 <form id="agentActionForm">
+                    <input type="hidden" id="currentAgentId">
                     <div class="form-group"><label>Agent Name</label><input type="text" id="agentName" class="form-control" required></div>
                     <div class="form-group"><label>Username</label><input type="text" id="agentUsername" class="form-control" required></div>
                     <div class="form-group"><label>Password</label><input type="password" id="agentPassword" class="form-control" required></div>
@@ -837,980 +1076,952 @@
     </div>
 
     <div class="modal" id="financialActionModal">
-        <div class="modal-content" style="max-width: 450px;">
-            <div class="modal-header"><h3>Process Financial Request</h3><button class="btn btn-danger close-modal">&times;</button></div>
+        <div class="modal-content">
+            <div class="modal-header"><h3 id="financialActionTitle">Approve Financial Request</h3><button class="btn btn-danger close-modal">&times;</button></div>
             <div class="modal-body">
-                <p>Request ID: <span id="reqIdDisplay"></span></p>
-                <p>User: <span id="reqUserDisplay"></span></p>
-                <p>Type: <span id="reqTypeDisplay"></span></p>
-                <p>Amount: <span id="reqAmountDisplay" class="danger-text"></span></p>
-                <p>Method: <span id="reqMethodDisplay"></span></p>
+                <p>Request ID: <span id="reqId"></span></p>
+                <p>User: <span id="reqUser"></span></p>
+                <p>Type: <span id="reqType" class="danger-text"></span></p>
+                <p>Amount (K): <span id="reqAmount" class="danger-text"></span></p>
+                <p>Method: <span id="reqMethod"></span></p>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Action</label>
+                    <select id="financialStatusAction" class="form-control">
+                        <option value="Approved">Approve</option>
+                        <option value="Rejected">Reject</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger close-modal">Cancel</button>
-                <button class="btn btn-warning" id="declineFinancialReq">Decline</button>
-                <button class="btn btn-success" id="approveFinancialReq">Approve</button>
+                <button class="btn btn-secondary close-modal">Cancel</button>
+                <button class="btn btn-success" id="executeFinancialAction">Execute</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="betActionModal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 id="betActionTitle">Update Bet Status</h3><button class="btn btn-danger close-modal">&times;</button></div>
+            <div class="modal-body">
+                <input type="hidden" id="betUpdateIdHidden">
+                <p>Bet ID: <span id="betUpdateId"></span></p>
+                <p>Match: <span id="betUpdateMatch"></span></p>
+                <p>User: <span id="betUpdateUser"></span></p>
+                <p>Amount (K): <span id="betUpdateAmount"></span></p>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>New Status</label>
+                    <select id="betUpdateStatus" class="form-control">
+                        <option value="Pending">Pending</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Won">Won</option>
+                        <option value="Lost">Lost</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Cancel</button>
+                <button class="btn btn-success" id="executeBetUpdate">Update Status</button>
             </div>
         </div>
     </div>
 
-
     <script>
-        // ====================================================================
-        // GLOBAL DATA STORE & HELPER FUNCTIONS
-        // ====================================================================
+        const globalLoginScreen = document.getElementById('globalLoginScreen');
+        const userFrontendApp = document.getElementById('userFrontendApp');
+        const adminAgentApp = document.getElementById('adminAgentApp');
+        const frontendLogoutBtn = document.getElementById('frontendLogoutBtn');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        const supportIcon = document.getElementById('supportIcon');
+        const supportOptions = document.getElementById('supportOptions');
+        const mainNavBar = document.getElementById('mainNavBar');
+        const frontendContentArea = document.getElementById('frontendContentArea');
 
-        const CURRENCY_SYMBOL = 'K'; // MMK Kyat Symbol
-        
+        let revenueChart = null;
+        let dailyReportChart = null;
+
+        // --- Simulated Database (globalData) ---
         let globalData = {
             loggedInUser: null,
             isAdmin: false,
             isAgent: false,
-            taxRate: 5, // 5% tax rate (10000 kyat = 500 kyat tax)
-            settings: {
-                telegramUrl: 'https://t.me/youradminid',
-                viberUrl: 'viber://chat?number=+959xxxxxxxxx'
-            },
             users: [
-                { id: 'ADM001', username: 'admin', password: 'admin', role: 'admin', balance: 99999999, status: 'active', isFirstLogin: false },
-                { id: 'AGT001', username: 'agent1', password: 'agent1', role: 'agent', commission: 5, balance: 5000000, status: 'active', isFirstLogin: false },
-                { id: 'USR001', username: 'user1', password: 'user1', role: 'user', agentId: 'AGT001', balance: 50000.00, status: 'active', isFirstLogin: true },
-                { id: 'USR002', username: 'user2', password: 'newuserpass', role: 'user', agentId: 'AGT001', balance: 1000.00, status: 'active', isFirstLogin: false },
-                { id: 'USR003', username: 'banneduser', password: 'bannedpass', role: 'user', agentId: 'AGT001', balance: 0.00, status: 'banned', isFirstLogin: false }
+                { id: 1, username: 'admin', password: 'admin', role: 'admin', balance: 9999999, agentId: null, firstLogin: false },
+                { id: 2, username: 'agent1', password: 'agent1', role: 'agent', balance: 5000000, commission: 5, firstLogin: false },
+                { id: 3, username: 'user1', password: 'user1', role: 'user', balance: 50000, agentId: 2, firstLogin: false },
+                { id: 4, username: 'user2', password: 'user2', role: 'user', balance: 120000, agentId: 2, firstLogin: true }
             ],
             agents: [
-                { id: 'AGT001', name: 'Agent John', username: 'agent1', commission: 5, balance: 5000000, status: 'active' },
+                { id: 2, name: 'Agent Alpha', username: 'agent1', password: 'agent1', commission: 5, balance: 5000000, totalUsers: 2 }
             ],
             odds: [
-                { id: 'ODD001', match: 'Man Utd vs Liverpool', homeOdd: 2.10, awayOdd: 3.00, overOdd: 1.85, underOdd: 2.05, type: 'single' },
-                { id: 'ODD002', match: 'Barcelona vs Real Madrid', homeOdd: 2.50, awayOdd: 2.80, overOdd: 1.70, underOdd: 2.20, type: 'single' }
+                { id: 1, match: 'Chelsea vs Man City', home: 3.20, away: 1.95, over: 1.75, under: 2.10, type: 'Parlay' },
+                { id: 2, match: 'Liverpool vs Arsenal', home: 2.05, away: 3.45, over: 2.50, under: 1.50, type: 'Single' }
             ],
             bets: [
-                { id: 'BET001', userId: 'USR001', match: 'Man Utd vs Liverpool', betType: 'Home Win', odd: 2.10, amount: 1000, tax: 50, status: 'Win', date: new Date().toLocaleString() },
-                { id: 'BET002', userId: 'USR002', match: 'Barcelona vs Real Madrid', betType: 'Over 2.5', odd: 1.70, amount: 500, tax: 25, status: 'Pending', date: new Date().toLocaleString() }
+                { id: 1, userId: 3, match: 'Chelsea vs Man City', betType: 'Parlay', odd: 3.20, amount: 1000, taxRate: 5, status: 'Accepted', date: '2025-10-25', settled: false },
+                { id: 2, userId: 4, match: 'Liverpool vs Arsenal', betType: 'Single', odd: 1.50, amount: 5000, taxRate: 5, status: 'Lost', date: '2025-10-25', settled: true }
             ],
-            financialLogs: [
-                { id: 'FIN001', userId: 'USR001', type: 'Deposit', amount: 50000, method: 'KBZ Pay', status: 'Approved', date: new Date().toLocaleString() },
-                { id: 'FIN002', userId: 'USR002', type: 'Withdrawal', amount: 500, method: 'Wave Money', status: 'Pending', date: new Date().toLocaleString() }
-            ]
-        };
-
-        const texts = {
-            en: {
-                dashboard: "Dashboard", userManagement: "User Management", oddManagement: "Odd Management", agentManagement: "Agent Management", bettingLogs: "Betting Logs", reports: "Reports", settings: "Settings", logout: "Logout", financialLogsAdmin: "Financial Logs"
+            financials: [
+                { id: 1, userId: 3, type: 'Deposit', amount: 50000, method: 'KBZ Pay', date: '2025-10-25', status: 'Approved' },
+                { id: 2, userId: 4, type: 'Withdrawal', amount: 10000, method: 'Wave Money', date: '2025-10-25', status: 'Pending' }
+            ],
+            settings: {
+                taxRate: 5, // 5% tax on win
+                telegramUrl: 'https://t.me/mmbet789_support',
+                viberUrl: 'viber://chat?number=+95977xxxxxxx'
             },
-            my: {
-                dashboard: "ပင်မစာမျက်နှာ", userManagement: "အသုံးပြုသူများ စီမံခန့်ခွဲမှု", oddManagement: "အချိုးအတာများ စီမံခန့်ခွဲမှု", agentManagement: "ကိုယ်စားလှယ်များ စီမံခန့်ခွဲမှု", bettingLogs: "ကြေးစားမှတ်တမ်းများ", reports: "အစီရင်ခံစာများ", settings: "ဆက်တင်များ", logout: "ထွက်မည်", financialLogsAdmin: "ငွေကြေးမှတ်တမ်းများ"
-            }
+            nextIds: { user: 5, bet: 3, financial: 3, agent: 3, odd: 3 }
         };
-        let currentLang = 'en';
 
-        // Helper to format currency
-        function formatMMK(amount) {
-            return CURRENCY_SYMBOL + parseFloat(amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // Utility Functions
+        function getModal(id) { return document.getElementById(id); }
+        function showModal(id) { getModal(id).style.display = 'flex'; }
+        function hideModal(id) { getModal(id).style.display = 'none'; }
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', (e) => hideModal(e.target.closest('.modal').id));
+        });
+        function findUser(id) { return globalData.users.find(u => u.id === id); }
+        function findAgent(id) { return globalData.agents.find(a => a.id === id); }
+
+        // --- Frontend Functions ---
+
+        const SAMPLE_MATCHES_DATA = [
+            {
+                id: 'M001', sport: 'Football', league: 'English Premier League', time: 'Live 25\'', 
+                home: 'Manchester Utd', away: 'Liverpool FC', score: '1 - 0',
+                odds: { '1X2': ['2.10', '3.40', '3.15'], 'HDP': ['0.5', '1.95', '1.85'], 'OU': ['2.5', '2.00', '1.80'] }
+            },
+            {
+                id: 'M002', sport: 'Football', league: 'Spanish La Liga', time: '02:00', 
+                home: 'Real Madrid', away: 'FC Barcelona', score: '0 - 0',
+                odds: { '1X2': ['1.90', '3.50', '3.30'], 'HDP': ['0.5', '2.05', '1.75'], 'OU': ['3.5', '2.10', '1.70'] }
+            },
+            {
+                id: 'M003', sport: 'Basketball', league: 'NBA', time: 'Live Q3', 
+                home: 'Lakers', away: 'Celtics', score: '78 - 85',
+                odds: { '1X2': ['1.50', '2.50', '3.00'], 'HDP': ['6.5', '1.90', '1.90'], 'OU': ['200.5', '1.85', '1.95'] }
+            }
+        ];
+
+        function showSportOdds(sportName, element) {
+            document.querySelectorAll('.sport-nav-list li').forEach(li => li.classList.remove('active'));
+            if (element) {
+                element.parentElement.classList.add('active');
+            }
+            const iconClass = { 'Football': 'fas fa-futbol', 'Basketball': 'fas fa-basketball-ball', 'Tennis': 'fas fa-table-tennis', 'Volleyball': 'fas fa-volleyball-ball', 'IceHockey': 'fas fa-hockey-puck' }[sportName] || 'fas fa-futbol';
+            document.getElementById('oddsMainTitle').innerHTML = `<i class="${iconClass}"></i> Live ${sportName} Odds`;
+            renderLiveOdds(sportName);
+            return false;
         }
 
-        // Helper to calculate tax
-        function calculateTax(amount) {
-            return (amount * globalData.taxRate) / 100;
+        function renderLiveOdds(sportFilter = 'Football') {
+            const liveMatchesContainer = document.getElementById('liveMatchesContainer');
+            if (!liveMatchesContainer) return;
+
+            liveMatchesContainer.innerHTML = ''; 
+            const filteredMatches = SAMPLE_MATCHES_DATA.filter(match => match.sport === sportFilter);
+
+            if (filteredMatches.length === 0) {
+                 liveMatchesContainer.innerHTML = `<div style="padding: 20px; text-align: center; color: #888;">No live odds available for ${sportFilter} at the moment.</div>`;
+                 return;
+            }
+
+            filteredMatches.forEach(match => {
+                const row = document.createElement('div');
+                row.className = 'match-row';
+                row.setAttribute('data-match-id', match.id);
+
+                row.innerHTML = `
+                    <div class="match-info">
+                        <span class="match-time">${match.time}</span>
+                        <div class="teams">
+                            <span class="team-name home-team">${match.home}</span>
+                            <span class="team-name away-team">${match.away}</span>
+                        </div>
+                        <span class="score">${match.score}</span>
+                    </div>
+                    <div class="odds-cell odds-1x2">
+                        <button class="odd-btn" onclick="placeBet('${match.home} Win (1X2)', ${match.odds['1X2'][0]}, '1X2')">${match.odds['1X2'][0]}</button>
+                        <button class="odd-btn" onclick="placeBet('Draw (1X2)', ${match.odds['1X2'][1]}, '1X2')">${match.odds['1X2'][1]}</button>
+                        <button class="odd-btn" onclick="placeBet('${match.away} Win (1X2)', ${match.odds['1X2'][2]}, '1X2')">${match.odds['1X2'][2]}</button>
+                    </div>
+                    <div class="odds-cell odds-hdp">
+                        <button class="odd-btn hdp-val" disabled>${match.odds['HDP'][0]}</button>
+                        <button class="odd-btn hdp-odd" onclick="placeBet('${match.home} HDP ${match.odds['HDP'][0]}', ${match.odds['HDP'][1]}, 'HDP')">${match.odds['HDP'][1]}</button>
+                        <button class="odd-btn hdp-odd" onclick="placeBet('${match.away} HDP ${match.odds['HDP'][0]}', ${match.odds['HDP'][2]}, 'HDP')">${match.odds['HDP'][2]}</button>
+                    </div>
+                    <div class="odds-cell odds-ou">
+                        <button class="odd-btn ou-val" disabled>${match.odds['OU'][0]}</button>
+                        <button class="odd-btn ou-odd" onclick="placeBet('Over ${match.odds['OU'][0]}', ${match.odds['OU'][1]}, 'O/U')">${match.odds['OU'][1]}</button>
+                        <button class="odd-btn ou-odd" onclick="placeBet('Under ${match.odds['OU'][0]}', ${match.odds['OU'][2]}, 'O/U')">${match.odds['OU'][2]}</button>
+                    </div>
+                `;
+                liveMatchesContainer.appendChild(row);
+            });
         }
 
-        // Helper to populate Agent Select
-        function populateAgentSelect(selectId) {
+        function placeBet(option, odd, type) {
+            if (!globalData.loggedInUser || globalData.loggedInUser.role !== 'user') {
+                alert('Please log in as a user to place a bet.');
+                return;
+            }
+
+            const betSlipModal = getModal('betSlipModal');
+            document.getElementById('betOption').textContent = option;
+            document.getElementById('betOdd').textContent = odd.toFixed(2);
+            document.getElementById('betTypeDisplay').textContent = type;
+            document.getElementById('betAmount').value = '';
+            document.getElementById('taxInfo').textContent = `Tax Rate: ${globalData.settings.taxRate}% will be applied on winning amount.`;
+            betSlipModal.dataset.odd = odd;
+            betSlipModal.dataset.option = option;
+            betSlipModal.dataset.type = type;
+
+            showModal('betSlipModal');
+        }
+
+        document.getElementById('confirmBet').addEventListener('click', function() {
+            const betSlipModal = getModal('betSlipModal');
+            const amount = parseFloat(document.getElementById('betAmount').value);
+            const odd = parseFloat(betSlipModal.dataset.odd);
+            const option = betSlipModal.dataset.option;
+            const type = betSlipModal.dataset.type;
+            const user = globalData.loggedInUser;
+
+            if (isNaN(amount) || amount < 100) {
+                alert('Please enter a valid amount (minimum K100).');
+                return;
+            }
+
+            if (amount > user.balance) {
+                alert('Insufficient balance.');
+                return;
+            }
+
+            // Deduct amount
+            user.balance -= amount;
+
+            // Log the bet
+            const newBet = {
+                id: globalData.nextIds.bet++,
+                userId: user.id,
+                match: option,
+                betType: type,
+                odd: odd,
+                amount: amount,
+                taxRate: globalData.settings.taxRate,
+                status: 'Accepted', // Bets are typically "Accepted" on deduction
+                date: new Date().toISOString().split('T')[0],
+                settled: false
+            };
+            globalData.bets.push(newBet);
+            
+            updateFrontendUI();
+            
+            hideModal('betSlipModal');
+            alert(`Bet of K${amount} placed on ${option} at ${odd} (Type: ${type}). Current Balance: K${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}.`);
+        });
+
+        function initializeFrontend() {
+            const user = globalData.loggedInUser;
+            document.getElementById('frontendUsernameDisplay').textContent = user.username;
+            
+            renderLiveOdds(); 
+            updateFrontendUI();
+            showTab('live-bet');
+            loadSupportSettings();
+        }
+
+        function updateFrontendUI() {
+            const user = globalData.loggedInUser;
+            if (user && user.role === 'user') {
+                document.getElementById('frontendUserBalanceDisplay').textContent = `K${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                loadUserBetLogs();
+                loadUserFinancialLogs();
+            }
+        }
+
+        function showTab(action) {
+            document.querySelectorAll('.frontend-nav-bar button').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.querySelector(`button[data-action="${action}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            document.querySelectorAll('.frontend-sub-content').forEach(content => content.style.display = 'none');
+            const targetContent = document.getElementById(`${action}-content`);
+            if (targetContent) {
+                if (action === 'live-bet') {
+                    frontendContentArea.style.padding = '0'; 
+                    targetContent.style.display = 'flex';
+                } else {
+                    frontendContentArea.style.padding = '20px'; 
+                    targetContent.style.display = 'block';
+                }
+            }
+        }
+
+        mainNavBar.addEventListener('click', function(e) {
+            const button = e.target.closest('button');
+            if (button && button.dataset.action) {
+                showTab(button.dataset.action);
+            }
+        });
+
+        function loadUserBetLogs() {
+            const tableBody = document.getElementById('userBetLogsTable');
+            tableBody.innerHTML = '';
+            const userBets = globalData.bets.filter(b => b.userId === globalData.loggedInUser.id).reverse();
+            
+            if (userBets.length === 0) {
+                 tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: #888;">No bets placed yet.</td></tr>`;
+                 return;
+            }
+
+            userBets.forEach(bet => {
+                const row = tableBody.insertRow();
+                const statusColor = bet.status === 'Won' ? 'var(--success)' : bet.status === 'Lost' ? 'var(--danger)' : bet.status === 'Cancelled' ? 'var(--warning)' : '#ccc';
+                row.innerHTML = `
+                    <td>#${bet.id}</td>
+                    <td>${bet.match} @ ${bet.odd.toFixed(2)}</td>
+                    <td>${bet.betType}</td>
+                    <td>K${bet.amount.toLocaleString()}</td>
+                    <td style="color: ${statusColor}; font-weight: bold;">${bet.status}</td>
+                `;
+            });
+        }
+
+        function loadUserFinancialLogs() {
+            const tableBody = document.getElementById('userFinancialLogsTable');
+            tableBody.innerHTML = '';
+            const userFinancials = globalData.financials.filter(f => f.userId === globalData.loggedInUser.id).reverse();
+            
+            if (userFinancials.length === 0) {
+                 tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #888;">No financial records found.</td></tr>`;
+                 return;
+            }
+
+            userFinancials.forEach(log => {
+                const row = tableBody.insertRow();
+                const typeColor = log.type === 'Deposit' ? 'var(--success)' : 'var(--warning)';
+                const statusColor = log.status === 'Approved' ? 'var(--success)' : log.status === 'Rejected' ? 'var(--danger)' : '#ccc';
+                row.innerHTML = `
+                    <td>${log.date}</td>
+                    <td style="color: ${typeColor}; font-weight: bold;">${log.type}</td>
+                    <td>K${log.amount.toLocaleString()}</td>
+                    <td style="color: ${statusColor};">${log.status}</td>
+                `;
+            });
+        }
+
+        function openDepositWithdrawModal(type) {
+            const modal = getModal('financialModal');
+            document.getElementById('financialModalTitle').textContent = type + ' Request';
+            document.getElementById('submitFinancial').dataset.type = type;
+            document.getElementById('financialForm').reset();
+            showModal('financialModal');
+        }
+
+        document.getElementById('submitFinancial').addEventListener('click', function() {
+            const type = this.dataset.type;
+            const amount = parseFloat(document.getElementById('financialAmount').value);
+            const method = document.getElementById('financialMethod').value;
+            const user = globalData.loggedInUser;
+
+            if (isNaN(amount) || amount < 1000) {
+                alert('Minimum transaction is K1000.');
+                return;
+            }
+            if (!method) {
+                alert('Please select a payment method.');
+                return;
+            }
+            if (type === 'Withdrawal' && amount > user.balance) {
+                alert('Withdrawal amount exceeds balance.');
+                return;
+            }
+
+            const newFinancial = {
+                id: globalData.nextIds.financial++,
+                userId: user.id,
+                type: type,
+                amount: amount,
+                method: method,
+                date: new Date().toISOString().split('T')[0],
+                status: 'Pending'
+            };
+            globalData.financials.push(newFinancial);
+
+            updateFrontendUI();
+            hideModal('financialModal');
+            alert(`${type} request of K${amount.toLocaleString()} submitted successfully. Status: Pending.`);
+        });
+
+
+        // --- Admin/Agent Functions (Backend Logic) ---
+
+        function loadSupportSettings() {
+            document.getElementById('telegramLink').href = globalData.settings.telegramUrl;
+            document.getElementById('viberLink').href = globalData.settings.viberUrl;
+        }
+
+        function populateAgentSelect(selectId, selectedAgentId = null) {
             const select = document.getElementById(selectId);
-            select.innerHTML = '<option value="">(None)</option>';
+            select.innerHTML = '<option value="">-- Select Agent --</option>';
             globalData.agents.forEach(agent => {
                 const option = document.createElement('option');
                 option.value = agent.id;
-                option.textContent = `${agent.name} (${agent.id})`;
+                option.textContent = `${agent.name} (${agent.username})`;
+                if (selectedAgentId && agent.id === selectedAgentId) {
+                    option.selected = true;
+                }
                 select.appendChild(option);
             });
         }
 
-        // ====================================================================
-        // FRONTEND (USER) LOGIC
-        // ====================================================================
-
-        const userFrontendApp = document.getElementById('userFrontendApp');
-        const frontendLogoutBtn = document.getElementById('frontendLogoutBtn');
-        const frontendContentArea = document.getElementById('frontendContentArea');
-        const mainNavBar = document.getElementById('mainNavBar');
-        const supportIcon = document.getElementById('supportIcon');
-        const supportOptions = document.getElementById('supportOptions');
-        const telegramLink = document.getElementById('telegramLink');
-        const viberLink = document.getElementById('viberLink');
-
-        function initializeFrontend() {
-            // Update User Info
-            const user = globalData.loggedInUser;
-            document.getElementById('frontendUsernameDisplay').textContent = user.username;
-            document.getElementById('frontendUserBalanceDisplay').textContent = formatMMK(user.balance);
-
-            // Set Support Links
-            telegramLink.href = globalData.settings.telegramUrl;
-            viberLink.href = globalData.settings.viberUrl;
-
-            // Show default content
-            showFrontendContent('live-bet');
-            
-            // Re-populate logs in case of updates
-            populateUserBetLogs();
-            populateUserFinancialLogs();
-        }
-
-        // Navigation
-        mainNavBar.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                mainNavBar.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                showFrontendContent(this.getAttribute('data-action'));
-            });
-        });
-
-        function showFrontendContent(contentId) {
-            frontendContentArea.querySelectorAll('.frontend-sub-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            document.getElementById(contentId + '-content').style.display = 'block';
-
-            if (contentId === 'bet-logs') populateUserBetLogs();
-            if (contentId === 'financial-logs') populateUserFinancialLogs();
-        }
-        
-        // Bet Slip Logic (Simulated)
-        let currentBet = {};
-
-        window.placeBet = function(option, odd, betType) {
-            currentBet.matchOption = option;
-            currentBet.odd = odd;
-            currentBet.betType = betType;
-
-            document.getElementById('betOption').textContent = option;
-            document.getElementById('betOdd').textContent = odd;
-            document.getElementById('betTypeDisplay').textContent = betType;
-            
-            // Update tax info
-            const betAmountInput = document.getElementById('betAmount');
-            const taxInfo = document.getElementById('taxInfo');
-            
-            // Add event listener to update tax info when amount changes
-            betAmountInput.oninput = function() {
-                const amount = parseFloat(this.value) || 0;
-                const tax = calculateTax(amount * odd);
-                taxInfo.textContent = `If Win: ${formatMMK(amount * odd)} - Tax ${formatMMK(tax)} = ${formatMMK((amount * odd) - tax)}`;
-            };
-            
-            // Trigger initial calculation
-            betAmountInput.oninput();
-            
-            document.getElementById('betSlipModal').style.display = 'flex';
-        };
-
-        document.getElementById('confirmBet').addEventListener('click', function() {
-            const amount = parseFloat(document.getElementById('betAmount').value);
-            const user = globalData.loggedInUser;
-
-            if (isNaN(amount) || amount <= 0) {
-                alert('Invalid bet amount.');
-                return;
-            }
-
-            if (user.balance < amount) {
-                alert('Insufficient balance. Your balance is ' + formatMMK(user.balance));
-                return;
-            }
-
-            // Calculate tax for potential win
-            const potentialWin = amount * currentBet.odd;
-            const tax = calculateTax(potentialWin);
-
-            // Simulate Bet Placement
-            user.balance -= amount;
-            
-            const newBet = {
-                id: 'BET' + (globalData.bets.length + 1).toString().padStart(3, '0'),
-                userId: user.id,
-                match: currentBet.matchOption,
-                betType: currentBet.betType,
-                odd: currentBet.odd,
-                amount: amount,
-                tax: tax,
-                status: 'Pending',
-                date: new Date().toLocaleString()
-            };
-            globalData.bets.push(newBet);
-            
-            document.getElementById('frontendUserBalanceDisplay').textContent = formatMMK(user.balance);
-            document.getElementById('betSlipModal').style.display = 'none';
-            alert(`Bet Placed Successfully! Amount: ${formatMMK(amount)} on ${currentBet.matchOption}`);
-            
-            // Update Admin view
-            if (globalData.isAdmin) populateAdminDashboard();
-            if (globalData.isAdmin || globalData.isAgent) populateBettingLogsTable();
-            populateUserBetLogs();
-        });
-
-        // User Bet Logs Population
-        function populateUserBetLogs() {
-            const user = globalData.loggedInUser;
-            const table = document.getElementById('userBetLogsTable');
-            table.innerHTML = '';
-            
-            const userBets = globalData.bets.filter(b => b.userId === user.id).reverse();
-            
-            userBets.forEach(bet => {
-                const statusColor = bet.status === 'Win' ? 'var(--success)' : bet.status === 'Lose' ? 'var(--danger)' : 'var(--warning)';
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td style="padding: 10px;">${bet.id}</td>
-                    <td style="padding: 10px;">${bet.match}</td>
-                    <td style="padding: 10px;">${bet.betType} @ ${bet.odd}</td>
-                    <td style="padding: 10px;">${formatMMK(bet.amount)}</td>
-                    <td style="padding: 10px; color: ${statusColor};">${bet.status}</td>
-                `;
-                table.appendChild(row);
-            });
-        }
-        
-        // User Financial Logs Population
-        function populateUserFinancialLogs() {
-            const user = globalData.loggedInUser;
-            const table = document.getElementById('userFinancialLogsTable');
-            table.innerHTML = '';
-
-            const userLogs = globalData.financialLogs.filter(log => log.userId === user.id).reverse();
-
-            userLogs.forEach(log => {
-                const statusColor = log.status === 'Approved' ? 'var(--success)' : log.status === 'Pending' ? 'var(--warning)' : 'var(--danger)';
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td style="padding: 10px;">${log.date.split(',')[0]}</td>
-                    <td style="padding: 10px;">${log.type}</td>
-                    <td style="padding: 10px;">${formatMMK(log.amount)}</td>
-                    <td style="padding: 10px; color: ${statusColor};">${log.status}</td>
-                `;
-                table.appendChild(row);
-            });
-        }
-
-        // Deposit/Withdrawal Modal Logic
-        let currentFinancialType = '';
-
-        window.openDepositWithdrawModal = function(type) {
-            currentFinancialType = type;
-            document.getElementById('financialModalTitle').textContent = type + (type === 'Deposit' ? ' (ငွေသွင်းမည်)' : ' (ငွေထုတ်မည်)');
-            document.getElementById('financialModal').style.display = 'flex';
-        }
-
-        document.getElementById('submitFinancial').addEventListener('click', function() {
-            const amount = parseFloat(document.getElementById('financialAmount').value);
-            const method = document.querySelector('#financialForm select').value;
-            const user = globalData.loggedInUser;
-
-            if (isNaN(amount) || amount < 1000 || !method) {
-                alert('Please enter a valid amount (Min K1000) and select a method.');
-                return;
-            }
-
-            if (currentFinancialType === 'Withdrawal' && user.balance < amount) {
-                alert('Insufficient balance for withdrawal.');
-                return;
-            }
-
-            // Simulate Request Submission
-            const newLog = {
-                id: 'FIN' + (globalData.financialLogs.length + 1).toString().padStart(3, '0'),
-                userId: user.id,
-                type: currentFinancialType,
-                amount: amount,
-                method: method,
-                status: 'Pending',
-                date: new Date().toLocaleString()
-            };
-            globalData.financialLogs.push(newLog);
-
-            document.getElementById('financialModal').style.display = 'none';
-            alert(`${currentFinancialType} Request submitted! Waiting for Admin/Agent approval.`);
-            
-            // Update Logs
-            populateUserFinancialLogs();
-            if (globalData.isAdmin || globalData.isAgent) populateFinancialLogsTable();
-        });
-
-        // Support Chat Popup Toggle
-        supportIcon.addEventListener('click', function() {
-            const isVisible = supportOptions.style.display === 'flex';
-            supportOptions.style.display = isVisible ? 'none' : 'flex';
-        });
-
-        // ====================================================================
-        // ADMIN/AGENT PANEL LOGIC (From provided code, enhanced with MMK and data store)
-        // ====================================================================
-        
-        const adminAgentApp = document.getElementById('adminAgentApp');
-        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-        const adminPageTitle = document.getElementById('adminPageTitle');
-        const adminUserAvatar = document.getElementById('adminUserAvatar');
-        const adminUserName = document.getElementById('adminUserName');
-        const adminUserRole = document.getElementById('adminUserRole');
-        const adminSidebarLinks = document.querySelectorAll('#adminAgentApp .sidebar-menu a');
-        const adminTabContents = document.querySelectorAll('#adminAgentApp .tab-content');
-        const adminLangButtons = document.querySelectorAll('#adminAgentApp .lang-btn');
-        const adminModals = document.querySelectorAll('#adminAgentApp .modal');
-        const adminCloseModalButtons = document.querySelectorAll('#adminAgentApp .close-modal');
-
         function initializeAdminPanel() {
             const user = globalData.loggedInUser;
-            adminUserAvatar.textContent = user.username.slice(0, 1).toUpperCase();
-            adminUserName.textContent = user.username;
-            adminUserRole.textContent = user.role.toUpperCase();
+            document.getElementById('adminUserName').textContent = user.username;
+            document.getElementById('adminUserRole').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+            document.getElementById('adminUserAvatar').textContent = user.username.charAt(0).toUpperCase();
 
-            // Hide/Show Admin/Agent specific links
-            const adminOnlyLinks = ['agentManagementLink', 'settingsLink', 'oddManagementLink'];
-            if (user.role === 'agent') {
-                adminOnlyLinks.forEach(id => document.getElementById(id).style.display = 'none');
-            } else {
-                adminOnlyLinks.forEach(id => document.getElementById(id).style.display = 'block');
-            }
-
-            // Set current active tab (Dashboard by default)
-            adminSidebarLinks.forEach(link => link.classList.remove('active'));
-            document.querySelector('[data-tab="dashboard"]').classList.add('active');
-            adminTabContents.forEach(tab => tab.classList.remove('active'));
-            document.getElementById('dashboard').classList.add('active');
-            adminPageTitle.textContent = texts[currentLang].dashboard;
-
-            // Populate all data tables
-            populateAdminDashboard();
-            populateUsersTable();
-            populateAgentsTable();
-            populateOddsTable();
-            populateBettingLogsTable();
-            populateFinancialLogsTable();
+            const isAdmin = user.role === 'admin';
+            document.getElementById('agentManagementLink').style.display = isAdmin ? 'list-item' : 'none';
+            document.getElementById('settingsLink').style.display = isAdmin ? 'list-item' : 'none';
             
-            // Initialize tax settings
-            document.getElementById('taxRateInput').value = globalData.taxRate;
+            // Re-load all data
+            loadAdminDashboard();
+            loadAdminUsers();
+            loadAdminAgents();
+            loadAdminFinancialLogs();
+            loadAdminBettingLogs();
+            loadAdminOdds();
+            loadSettings();
         }
-        
-        // Admin Navigation
-        adminSidebarLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                adminSidebarLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                adminTabContents.forEach(tab => tab.classList.remove('active'));
-                
-                const tabId = this.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-                adminPageTitle.textContent = texts[currentLang][tabId] || tabId;
-            });
-        });
 
-        // Admin Sub-tab navigation
-        document.querySelectorAll('#adminAgentApp .tabs .tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const parent = this.closest('.card-body');
-                const tabId = this.getAttribute('data-subtab');
-                parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                parent.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-                parent.querySelector(`#${tabId}`).classList.add('active');
-            });
-        });
-
-        // Admin Modal Controls
-        adminCloseModalButtons.forEach(button => {
-            button.addEventListener('click', () => adminModals.forEach(modal => modal.style.display = 'none'));
-        });
-
-        // Admin Dashboard Population
-        function populateAdminDashboard() {
+        function loadAdminDashboard() {
             const totalBets = globalData.bets.reduce((sum, bet) => sum + bet.amount, 0);
-            const winAmount = globalData.bets.filter(b => b.status === 'Win').reduce((sum, bet) => sum + (bet.amount * bet.odd), 0);
-            const loseAmount = globalData.bets.filter(b => b.status === 'Lose').reduce((sum, bet) => sum + bet.amount, 0);
-            const activeAgents = globalData.agents.filter(a => a.status === 'active').length;
+            const pendingWithdrawals = globalData.financials.filter(f => f.type === 'Withdrawal' && f.status === 'Pending').reduce((sum, f) => sum + f.amount, 0);
+            const settledBets = globalData.bets.filter(b => b.settled);
+            const netWin = settledBets.reduce((net, bet) => {
+                if (bet.status === 'Won') {
+                    const payout = bet.amount * bet.odd;
+                    const tax = payout * (bet.taxRate / 100);
+                    return net + (payout - tax - bet.amount); // Profit
+                } else if (bet.status === 'Lost') {
+                    return net - bet.amount; // Loss
+                }
+                return net;
+            }, 0);
+            
+            document.getElementById('totalBetsAdmin').textContent = `K${totalBets.toLocaleString()}`;
+            document.getElementById('pendingWithdrawals').textContent = `K${pendingWithdrawals.toLocaleString()}`;
+            document.getElementById('netWinAmount').textContent = `K${netWin.toLocaleString()}`;
+            document.getElementById('totalActiveUsers').textContent = globalData.users.filter(u => u.role === 'user').length;
 
-            document.getElementById('totalBetsAdmin').textContent = formatMMK(totalBets);
-            document.getElementById('winAmountAdmin').textContent = formatMMK(winAmount);
-            document.getElementById('loseAmountAdmin').textContent = formatMMK(loseAmount);
-            document.getElementById('activeAgentsAdmin').textContent = activeAgents;
+            loadAdminActivities();
+            initializeAdminCharts(netWin);
+        }
 
-            // Simple Activities (using financial logs + last 4 bets)
-            const recentActivities = [];
-            globalData.financialLogs.slice(-2).reverse().forEach(log => {
-                recentActivities.push({
-                    time: new Date(log.date).toLocaleTimeString(),
-                    user: log.userId,
-                    activity: log.type + ' Request',
-                    amount: log.amount,
-                    status: log.status
-                });
-            });
-            globalData.bets.slice(-2).reverse().forEach(bet => {
-                recentActivities.push({
-                    time: new Date(bet.date).toLocaleTimeString(),
-                    user: bet.userId,
-                    activity: 'Bet Placed - ' + bet.betType,
-                    amount: bet.amount,
-                    status: bet.status
-                });
-            });
-
-            const activitiesTable = document.getElementById('recentActivitiesAdmin');
-            activitiesTable.innerHTML = '';
-            recentActivities.forEach(activity => {
-                const statusClass = activity.status === 'Approved' || activity.status === 'Win' ? 'btn-success' : activity.status === 'Pending' ? 'btn-warning' : 'btn-danger';
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${activity.time}</td>
-                    <td>${activity.user}</td>
-                    <td>${activity.activity}</td>
-                    <td>${formatMMK(activity.amount)}</td>
-                    <td><span class="btn ${statusClass} btn-sm">${activity.status}</span></td>
-                `;
-                activitiesTable.appendChild(row);
+        function initializeAdminCharts(netWin) {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            if (revenueChart) revenueChart.destroy();
+            revenueChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Today', 'Yesterday', 'Last 7 Days'],
+                    datasets: [{
+                        label: 'Net Win/Loss (K)',
+                        data: [netWin, 50000, -10000], 
+                        backgroundColor: [
+                            netWin >= 0 ? 'rgba(39, 174, 96, 0.5)' : 'rgba(231, 76, 60, 0.5)',
+                            'rgba(243, 156, 18, 0.5)',
+                            'rgba(243, 156, 18, 0.5)'
+                        ],
+                        borderColor: [
+                            netWin >= 0 ? 'rgba(39, 174, 96, 1)' : 'rgba(231, 76, 60, 1)',
+                            'rgba(243, 156, 18, 1)',
+                            'rgba(243, 156, 18, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
             });
         }
-        
-        // Admin User Management (Enhanced for MMK, Activate/Ban, Password Reset)
-        document.getElementById('addUserBtn').addEventListener('click', function() {
-            openUserActionModal('Add');
-        });
 
-        window.openUserActionModal = function(action, userId = null) {
-            const modal = document.getElementById('userActionModal');
-            const userActionTitle = document.getElementById('userActionTitle');
-            
-            userActionTitle.textContent = action === 'Add' ? 'Add New User' : 'Edit User / Adjust Balance';
-            modal.style.display = 'flex';
+        function loadAdminActivities() {
+            const tableBody = document.getElementById('recentActivitiesAdmin');
+            tableBody.innerHTML = '';
+            const recentLogs = [...globalData.bets, ...globalData.financials]
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 5);
+
+            recentLogs.forEach(log => {
+                const user = findUser(log.userId) || { username: 'System', role: 'admin' };
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${log.date}</td>
+                    <td>${user.username} (${user.role})</td>
+                    <td>${log.betType || log.type}</td>
+                    <td>K${log.amount.toLocaleString()}</td>
+                    <td>${log.status}</td>
+                `;
+            });
+        }
+
+        function loadAdminUsers() {
+            const tableBody = document.getElementById('usersTableAdmin');
+            tableBody.innerHTML = '';
+            globalData.users.filter(u => u.role === 'user').forEach(user => {
+                const agent = findAgent(user.agentId);
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>K${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                    <td>${user.firstLogin ? 'Requires PW Change' : 'Active'}</td>
+                    <td>${agent ? agent.username : 'N/A'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="openUserActionModal(${user.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">Delete</button>
+                    </td>
+                `;
+            });
+        }
+
+        function openUserActionModal(userId = null) {
+            const modal = getModal('userActionModal');
+            const form = document.getElementById('userActionForm');
+            form.reset();
             populateAgentSelect('userActionAgent');
-            document.getElementById('moneyActionGroup').style.display = action === 'Edit' ? 'block' : 'none';
 
             if (userId) {
-                const user = globalData.users.find(u => u.id === userId);
+                const user = findUser(userId);
+                document.getElementById('userActionTitle').textContent = `Edit User: ${user.username}`;
                 document.getElementById('currentUserId').value = user.id;
                 document.getElementById('userActionUsername').value = user.username;
                 document.getElementById('userActionBalance').value = user.balance.toFixed(2);
                 document.getElementById('userActionAgent').value = user.agentId || '';
                 document.getElementById('userActionPassword').placeholder = 'Leave blank to not change';
             } else {
+                document.getElementById('userActionTitle').textContent = 'Add New User';
                 document.getElementById('currentUserId').value = '';
-                document.getElementById('userActionUsername').value = '';
-                document.getElementById('userActionBalance').value = '0';
-                document.getElementById('userActionAgent').value = '';
-                document.getElementById('userActionPassword').placeholder = 'Set initial password';
+                document.getElementById('userActionPassword').placeholder = 'Enter new password';
             }
+            showModal('userActionModal');
         }
-        
+
         document.getElementById('saveUserActionButton').addEventListener('click', function() {
             const id = document.getElementById('currentUserId').value;
             const username = document.getElementById('userActionUsername').value;
-            const newPassword = document.getElementById('userActionPassword').value;
-            let balance = parseFloat(document.getElementById('userActionBalance').value);
-            const agentId = document.getElementById('userActionAgent').value;
-            
-            let user = globalData.users.find(u => u.id === id);
+            const password = document.getElementById('userActionPassword').value;
+            const agentId = parseInt(document.getElementById('userActionAgent').value) || null;
+            const moneyAmount = parseFloat(document.getElementById('moneyAmount').value);
+            const moneyAction = document.getElementById('moneyAction').value;
+            let user;
 
-            if (user) {
-                // Edit User
+            if (id) {
+                user = findUser(parseInt(id));
                 user.username = username;
-                user.balance = balance;
                 user.agentId = agentId;
-                if (newPassword) user.password = newPassword;
-
-                // Handle Money Action
-                const moneyAmount = parseFloat(document.getElementById('moneyAmount').value);
-                const moneyAction = document.getElementById('moneyAction').value;
-                if (moneyAmount > 0) {
-                    if (moneyAction === 'Add') user.balance += moneyAmount;
-                    if (moneyAction === 'Subtract') user.balance -= moneyAmount;
-                    
-                    // Log the admin/agent initiated action
-                    globalData.financialLogs.push({
-                        id: 'FIN' + (globalData.financialLogs.length + 1).toString().padStart(3, '0'),
-                        userId: user.id,
-                        type: moneyAction === 'Add' ? 'Credit' : 'Debit',
-                        amount: moneyAmount,
-                        method: 'Admin/Agent Action',
-                        status: 'Approved',
-                        date: new Date().toLocaleString()
-                    });
-                }
+                if (password) user.password = password;
             } else {
-                // Add User
-                const newId = 'USR' + (globalData.users.filter(u => u.role === 'user').length + 1).toString().padStart(3, '0');
-                globalData.users.push({
-                    id: newId,
+                user = {
+                    id: globalData.nextIds.user++,
                     username: username,
-                    password: newPassword,
+                    password: password,
                     role: 'user',
+                    balance: 0,
                     agentId: agentId,
-                    balance: balance,
-                    status: 'active',
-                    isFirstLogin: true // Force password change
-                });
+                    firstLogin: true
+                };
+                globalData.users.push(user);
             }
 
-            document.getElementById('userActionModal').style.display = 'none';
-            populateUsersTable();
-            populateFinancialLogsTable();
-            alert('User data updated successfully.');
+            if (!isNaN(moneyAmount) && moneyAmount > 0) {
+                if (moneyAction === 'Add') {
+                    user.balance += moneyAmount;
+                } else if (moneyAction === 'Subtract') {
+                    user.balance = Math.max(0, user.balance - moneyAmount);
+                }
+            }
+            
+            loadAdminUsers();
+            hideModal('userActionModal');
+            loadAdminDashboard();
         });
         
-        window.toggleUserStatus = function(userId) {
-            const user = globalData.users.find(u => u.id === userId);
-            user.status = user.status === 'active' ? 'banned' : 'active';
-            populateUsersTable();
-            alert(`User ${user.username} is now ${user.status}.`);
+        function deleteUser(id) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                globalData.users = globalData.users.filter(u => u.id !== id);
+                loadAdminUsers();
+            }
         }
 
-        window.resetUserPassword = function(userId) {
-            const user = globalData.users.find(u => u.id === userId);
-            user.isFirstLogin = true; // Forces first time password change
-            alert(`Password reset for ${user.username}. User must change password on next login.`);
-        }
-
-        function populateUsersTable() {
-            const table = document.getElementById('usersTableAdmin');
-            table.innerHTML = '';
-            
-            globalData.users.filter(u => u.role === 'user').forEach(user => {
-                const statusClass = user.status === 'active' ? 'btn-success' : 'btn-danger';
-                const statusText = user.status === 'active' ? 'Active' : 'Banned';
-                const agent = globalData.agents.find(a => a.id === user.agentId);
-                
-                const row = document.createElement('tr');
+        function loadAdminOdds() {
+            const tableBody = document.getElementById('oddsTableAdmin');
+            tableBody.innerHTML = '';
+            globalData.odds.forEach(odd => {
+                const row = tableBody.insertRow();
                 row.innerHTML = `
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${formatMMK(user.balance)}</td>
-                    <td><span class="btn ${statusClass} btn-sm">${statusText}</span></td>
-                    <td>${agent ? agent.name : '-'}</td>
+                    <td>${odd.id}</td>
+                    <td>${odd.match}</td>
+                    <td>${odd.home.toFixed(2)}</td>
+                    <td>${odd.away.toFixed(2)}</td>
+                    <td>${odd.over.toFixed(2)}</td>
+                    <td>${odd.under.toFixed(2)}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm" onclick="openUserActionModal('Edit', '${user.id}')">Edit/Money</button>
-                        <button class="btn btn-warning btn-sm" onclick="toggleUserStatus('${user.id}')">${user.status === 'active' ? 'Ban' : 'Activate'}</button>
-                        <button class="btn btn-danger btn-sm" onclick="resetUserPassword('${user.id}')">Reset Pass</button>
+                        <button class="btn btn-sm btn-primary" onclick="openOddActionModal(${odd.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteOdd(${odd.id})">Delete</button>
                     </td>
                 `;
-                table.appendChild(row);
             });
         }
-        
-        // Admin Agents Management
-        document.getElementById('addAgentBtn').addEventListener('click', function() {
-            document.getElementById('agentActionModal').style.display = 'flex';
-        });
 
-        document.getElementById('saveAgentBtnAdmin').addEventListener('click', function() {
-            const name = document.getElementById('agentName').value;
-            const username = document.getElementById('agentUsername').value;
-            const password = document.getElementById('agentPassword').value;
-            const commission = parseInt(document.getElementById('agentCommission').value);
+        function openOddActionModal(oddId = null) {
+            const modal = getModal('oddActionModal');
+            document.getElementById('oddActionForm').reset();
+            if (oddId) {
+                const odd = globalData.odds.find(o => o.id === oddId);
+                document.getElementById('currentOddId').value = odd.id;
+                document.getElementById('oddMatch').value = odd.match;
+                document.getElementById('oddHome').value = odd.home;
+                document.getElementById('oddAway').value = odd.away;
+                document.getElementById('oddOver').value = odd.over;
+                document.getElementById('oddUnder').value = odd.under;
+            } else {
+                document.getElementById('currentOddId').value = '';
+            }
+            showModal('oddActionModal');
+        }
 
-            // Check if username already exists
-            if (globalData.users.find(u => u.username === username)) {
-                alert('Username already exists. Please choose a different username.');
-                return;
+        document.getElementById('saveOddBtn').addEventListener('click', function() {
+            const id = document.getElementById('currentOddId').value;
+            const newOdd = {
+                match: document.getElementById('oddMatch').value,
+                home: parseFloat(document.getElementById('oddHome').value),
+                away: parseFloat(document.getElementById('oddAway').value),
+                over: parseFloat(document.getElementById('oddOver').value),
+                under: parseFloat(document.getElementById('oddUnder').value),
+                type: 'Parlay' // Defaulting to Parlay/Live for this simplified view
+            };
+
+            if (id) {
+                const index = globalData.odds.findIndex(o => o.id === parseInt(id));
+                Object.assign(globalData.odds[index], newOdd);
+            } else {
+                newOdd.id = globalData.nextIds.odd++;
+                globalData.odds.push(newOdd);
             }
 
-            const newId = 'AGT' + (globalData.agents.length + 1).toString().padStart(3, '0');
-            globalData.agents.push({ 
-                id: newId, 
-                name: name, 
-                username: username,
-                commission: commission, 
-                balance: 0, 
-                status: 'active' 
-            });
-            
-            globalData.users.push({ 
-                id: newId, 
-                username: username, 
-                password: password, 
-                role: 'agent', 
-                commission: commission, 
-                balance: 0, 
-                status: 'active', 
-                isFirstLogin: true 
-            });
-
-            document.getElementById('agentActionModal').style.display = 'none';
-            populateAgentsTable();
-            alert('New Agent added successfully!');
+            loadAdminOdds();
+            hideModal('oddActionModal');
         });
+        
+        function deleteOdd(id) {
+            if (confirm('Are you sure you want to delete this odd?')) {
+                globalData.odds = globalData.odds.filter(o => o.id !== id);
+                loadAdminOdds();
+            }
+        }
 
-        function populateAgentsTable() {
-            const table = document.getElementById('agentsTableAdmin');
-            table.innerHTML = '';
-            
+        function loadAdminAgents() {
+            const tableBody = document.getElementById('agentsTableAdmin');
+            tableBody.innerHTML = '';
             globalData.agents.forEach(agent => {
-                const statusClass = agent.status === 'active' ? 'btn-success' : 'btn-danger';
-                const row = document.createElement('tr');
+                const row = tableBody.insertRow();
+                const totalUsers = globalData.users.filter(u => u.agentId === agent.id).length;
                 row.innerHTML = `
                     <td>${agent.id}</td>
                     <td>${agent.name}</td>
                     <td>${agent.username}</td>
                     <td>${agent.commission}%</td>
-                    <td>${formatMMK(agent.balance)}</td>
-                    <td><span class="btn ${statusClass} btn-sm">${agent.status}</span></td>
+                    <td>K${agent.balance.toLocaleString()}</td>
+                    <td>Active</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <button class="btn btn-sm btn-primary" onclick="openAgentActionModal(${agent.id})">Edit</button>
                     </td>
                 `;
-                table.appendChild(row);
             });
         }
-        
-        // Admin Odd Management
-        document.getElementById('addOddBtn').addEventListener('click', function() {
-            document.getElementById('oddActionModal').style.display = 'flex';
-        });
 
-        document.getElementById('saveOddBtn').addEventListener('click', function() {
-            const match = document.getElementById('oddMatch').value;
-            const homeOdd = parseFloat(document.getElementById('oddHome').value);
-            const awayOdd = parseFloat(document.getElementById('oddAway').value);
-            const overOdd = parseFloat(document.getElementById('oddOver').value);
-            const underOdd = parseFloat(document.getElementById('oddUnder').value);
-
-            const newId = 'ODD' + (globalData.odds.length + 1).toString().padStart(3, '0');
-            globalData.odds.push({ id: newId, match, homeOdd, awayOdd, overOdd, underOdd, type: 'single' });
-
-            document.getElementById('oddActionModal').style.display = 'none';
-            populateOddsTable();
-            alert('New Odd added successfully!');
-        });
-
-        function populateOddsTable() {
-            const table = document.getElementById('oddsTableAdmin');
-            table.innerHTML = '';
-
-            globalData.odds.forEach(odd => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${odd.match}</td>
-                    <td>Home: ${odd.homeOdd} / Away: ${odd.awayOdd}</td>
-                    <td>Over: ${odd.overOdd} / Under: ${odd.underOdd}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-                `;
-                table.appendChild(row);
-            });
-        }
-        
-        // Admin Betting Logs
-        document.getElementById('refreshBetsBtn').addEventListener('click', function() {
-            populateBettingLogsTable();
-            alert('Betting logs refreshed!');
-        });
-
-        window.settleBet = function(betId, status) {
-            const bet = globalData.bets.find(b => b.id === betId);
-            if (!bet || bet.status !== 'Pending') return;
-            
-            const user = globalData.users.find(u => u.id === bet.userId);
-            if (!user) return;
-
-            bet.status = status;
-
-            if (status === 'Win') {
-                const winAmount = bet.amount * bet.odd;
-                const netWin = winAmount - bet.tax;
-                user.balance += netWin;
-                alert(`${user.username} won ${formatMMK(winAmount)}! Tax: ${formatMMK(bet.tax)}, Net: ${formatMMK(netWin)}`);
-            } else if (status === 'Lose') {
-                // Already deducted on bet placement. No action needed here.
-                alert(`${user.username} lost ${formatMMK(bet.amount)}.`);
+        function openAgentActionModal(agentId = null) {
+            const modal = getModal('agentActionModal');
+            document.getElementById('agentActionForm').reset();
+            if (agentId) {
+                const agent = findAgent(agentId);
+                document.getElementById('currentAgentId').value = agent.id;
+                document.getElementById('agentName').value = agent.name;
+                document.getElementById('agentUsername').value = agent.username;
+                document.getElementById('agentCommission').value = agent.commission;
+                document.getElementById('agentPassword').placeholder = 'Leave blank to not change';
+            } else {
+                document.getElementById('currentAgentId').value = '';
+                document.getElementById('agentPassword').placeholder = 'Enter new password';
             }
-
-            populateBettingLogsTable();
-            // Also update frontend for the user if they are logged in
-            if (globalData.loggedInUser && globalData.loggedInUser.id === user.id) {
-                document.getElementById('frontendUserBalanceDisplay').textContent = formatMMK(user.balance);
-            }
+            showModal('agentActionModal');
         }
 
-        function populateBettingLogsTable() {
-            const table = document.getElementById('bettingLogsTableAdmin');
-            table.innerHTML = '';
-            
-            globalData.bets.reverse().forEach(bet => {
-                const user = globalData.users.find(u => u.id === bet.userId);
-                const statusClass = bet.status === 'Win' ? 'btn-success' : bet.status === 'Lose' ? 'btn-danger' : 'btn-warning';
-                
-                let actions = `
-                    <button class="btn btn-success btn-sm" onclick="settleBet('${bet.id}', 'Win')">Win</button>
-                    <button class="btn btn-danger btn-sm" onclick="settleBet('${bet.id}', 'Lose')">Lose</button>
-                `;
-                if (bet.status !== 'Pending') {
-                    actions = `<span class="btn ${statusClass} btn-sm">${bet.status}</span>`;
-                }
+        document.getElementById('saveAgentBtnAdmin').addEventListener('click', function() {
+            const id = document.getElementById('currentAgentId').value;
+            const name = document.getElementById('agentName').value;
+            const username = document.getElementById('agentUsername').value;
+            const password = document.getElementById('agentPassword').value;
+            const commission = parseInt(document.getElementById('agentCommission').value);
+            let agent;
 
-                const row = document.createElement('tr');
+            if (id) {
+                agent = findAgent(parseInt(id));
+                agent.name = name;
+                agent.username = username;
+                agent.commission = commission;
+                if (password) agent.password = password;
+            } else {
+                agent = {
+                    id: globalData.nextIds.agent++,
+                    name: name,
+                    username: username,
+                    password: password,
+                    role: 'agent',
+                    commission: commission,
+                    balance: 0,
+                    totalUsers: 0
+                };
+                globalData.agents.push(agent);
+                globalData.users.push(Object.assign({ role: 'agent', firstLogin: true }, agent));
+            }
+
+            loadAdminAgents();
+            hideModal('agentActionModal');
+        });
+
+        function loadAdminBettingLogs() {
+            const tableBody = document.getElementById('bettingLogsTableAdmin');
+            tableBody.innerHTML = '';
+            
+            let filteredBets = globalData.bets.reverse();
+
+            if (globalData.loggedInUser.role === 'agent') {
+                const agentUsers = globalData.users.filter(u => u.agentId === globalData.loggedInUser.id).map(u => u.id);
+                filteredBets = filteredBets.filter(b => agentUsers.includes(b.userId));
+            }
+
+            filteredBets.forEach(bet => {
+                const user = findUser(bet.userId) || { username: 'Deleted User' };
+                const row = tableBody.insertRow();
+                const statusColor = bet.status === 'Won' ? 'var(--success)' : bet.status === 'Lost' ? 'var(--danger)' : bet.status === 'Cancelled' ? 'var(--warning)' : '#ccc';
                 row.innerHTML = `
-                    <td>${bet.id}</td>
-                    <td>${user ? user.username : 'N/A'}</td>
+                    <td>#${bet.id}</td>
+                    <td>${user.username}</td>
                     <td>${bet.match}</td>
                     <td>${bet.betType}</td>
-                    <td>${bet.odd}</td>
-                    <td>${formatMMK(bet.amount)}</td>
-                    <td>${formatMMK(bet.tax)}</td>
-                    <td><span class="btn ${statusClass} btn-sm">${bet.status}</span></td>
-                    <td>${actions}</td>
+                    <td>${bet.odd.toFixed(2)}</td>
+                    <td>K${bet.amount.toLocaleString()}</td>
+                    <td style="color: ${statusColor};">${bet.status}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" onclick="openBetActionModal(${bet.id})">Settle</button>
+                    </td>
                 `;
-                table.appendChild(row);
             });
         }
         
-        // Admin Financial Logs
-        let currentReqId = null;
-
-        window.openFinancialActionModal = function(reqId) {
-            currentReqId = reqId;
-            const req = globalData.financialLogs.find(log => log.id === reqId);
-            const user = globalData.users.find(u => u.id === req.userId);
+        function openBetActionModal(betId) {
+            const bet = globalData.bets.find(b => b.id === betId);
+            const user = findUser(bet.userId) || { username: 'N/A' };
             
-            document.getElementById('reqIdDisplay').textContent = req.id;
-            document.getElementById('reqUserDisplay').textContent = user ? user.username : 'N/A';
-            document.getElementById('reqTypeDisplay').textContent = req.type;
-            document.getElementById('reqAmountDisplay').textContent = formatMMK(req.amount);
-            document.getElementById('reqMethodDisplay').textContent = req.method;
+            document.getElementById('betUpdateId').textContent = bet.id;
+            document.getElementById('betUpdateIdHidden').value = bet.id;
+            document.getElementById('betUpdateMatch').textContent = bet.match;
+            document.getElementById('betUpdateUser').textContent = user.username;
+            document.getElementById('betUpdateAmount').textContent = `K${bet.amount.toLocaleString()}`;
+            document.getElementById('betUpdateStatus').value = bet.status;
 
-            document.getElementById('financialActionModal').style.display = 'flex';
+            showModal('betActionModal');
         }
 
-        document.getElementById('approveFinancialReq').addEventListener('click', function() {
-            processFinancialRequest(currentReqId, 'Approved');
-            document.getElementById('financialActionModal').style.display = 'none';
+        document.getElementById('executeBetUpdate').addEventListener('click', function() {
+            const betId = parseInt(document.getElementById('betUpdateIdHidden').value);
+            const newStatus = document.getElementById('betUpdateStatus').value;
+            updateBetStatusAdmin(betId, newStatus);
+            hideModal('betActionModal');
         });
 
-        document.getElementById('declineFinancialReq').addEventListener('click', function() {
-            processFinancialRequest(currentReqId, 'Declined');
-            document.getElementById('financialActionModal').style.display = 'none';
-        });
+        function updateBetStatusAdmin(betId, newStatus) {
+            const bet = globalData.bets.find(b => b.id === betId);
+            const user = findUser(bet.userId);
 
-        function processFinancialRequest(reqId, status) {
-            const req = globalData.financialLogs.find(log => log.id === reqId);
-            const user = globalData.users.find(u => u.id === req.userId);
-            
-            if (!req || req.status !== 'Pending' || !user) return;
-            
-            req.status = status;
-            
-            if (status === 'Approved') {
-                if (req.type === 'Deposit') {
-                    user.balance += req.amount;
-                    alert(`Approved ${req.type} of ${formatMMK(req.amount)} for ${user.username}.`);
-                } else if (req.type === 'Withdrawal') {
-                    user.balance -= req.amount; // Deduct only on approval for withdrawal
-                    alert(`Approved ${req.type} of ${formatMMK(req.amount)} for ${user.username}.`);
+            if (!bet || !user) return;
+
+            // Only process settlement if the bet hasn't been settled before
+            if (!bet.settled && (newStatus === 'Won' || newStatus === 'Lost')) {
+                let payout = 0;
+                if (newStatus === 'Won') {
+                    payout = bet.amount * bet.odd;
+                    const tax = payout * (bet.taxRate / 100);
+                    const netPayout = payout - tax;
+                    user.balance += netPayout;
                 }
-            } else if (status === 'Declined' && req.type === 'Withdrawal') {
-                // If withdrawal was simulated to deduct on request, it would need to be re-credited here.
-                // In this setup, we only deduct on approval, so no need to re-credit on decline.
-                alert(`Declined ${req.type} of ${formatMMK(req.amount)} for ${user.username}.`);
-            }
-            
-            populateFinancialLogsTable();
-            if (globalData.loggedInUser && globalData.loggedInUser.id === user.id) {
-                document.getElementById('frontendUserBalanceDisplay').textContent = formatMMK(user.balance);
-            }
-        }
-
-        function populateFinancialLogsTable() {
-            const table = document.getElementById('financialLogsTableAdmin');
-            table.innerHTML = '';
-            
-            globalData.financialLogs.filter(log => log.status !== 'Approved' || log.type === 'Deposit' || log.type === 'Withdrawal').reverse().forEach(log => {
-                const user = globalData.users.find(u => u.id === log.userId);
-                const statusClass = log.status === 'Approved' ? 'btn-success' : log.status === 'Pending' ? 'btn-warning' : 'btn-danger';
                 
-                let actions = '';
-                if (log.status === 'Pending') {
-                    actions = `<button class="btn btn-primary btn-sm" onclick="openFinancialActionModal('${log.id}')">Process</button>`;
-                } else {
-                    actions = `<span class="btn ${statusClass} btn-sm">${log.status}</span>`;
-                }
+                // Mark as settled and update status
+                bet.settled = true;
+                bet.status = newStatus;
 
-                const row = document.createElement('tr');
+                // Update UI on both ends
+                if (globalData.loggedInUser.role === 'user') updateFrontendUI(); // For current user if logged in
+                loadAdminBettingLogs();
+                loadAdminDashboard();
+                loadAdminUsers();
+
+                alert(`Bet #${betId} settled as ${newStatus}. Payout: K${payout.toLocaleString()}. User ${user.username} balance updated.`);
+            } else if (bet.settled && (newStatus === 'Won' || newStatus === 'Lost')) {
+                alert('Bet already settled. Cannot resettle.');
+            } else {
+                 bet.status = newStatus; // Update status without settlement (e.g. to Pending/Accepted/Cancelled)
+                 loadAdminBettingLogs();
+                 alert(`Bet #${betId} status updated to ${newStatus}.`);
+            }
+        }
+
+        function loadAdminFinancialLogs() {
+            const tableBody = document.getElementById('financialLogsTableAdmin');
+            tableBody.innerHTML = '';
+            
+            let filteredFinancials = globalData.financials.reverse();
+
+            if (globalData.loggedInUser.role === 'agent') {
+                const agentUsers = globalData.users.filter(u => u.agentId === globalData.loggedInUser.id).map(u => u.id);
+                filteredFinancials = filteredFinancials.filter(f => agentUsers.includes(f.userId));
+            }
+
+            filteredFinancials.forEach(log => {
+                const user = findUser(log.userId) || { username: 'N/A' };
+                const row = tableBody.insertRow();
+                const statusColor = log.status === 'Approved' ? 'var(--success)' : log.status === 'Rejected' ? 'var(--danger)' : '#ccc';
+                const actionButton = log.status === 'Pending' ? `<button class="btn btn-sm btn-warning" onclick="openFinancialActionModal(${log.id})">Process</button>` : '';
+
                 row.innerHTML = `
-                    <td>${log.id}</td>
-                    <td>${user ? user.username : 'N/A'}</td>
+                    <td>#${log.id}</td>
+                    <td>${user.username}</td>
                     <td>${log.type}</td>
-                    <td>${formatMMK(log.amount)}</td>
+                    <td>K${log.amount.toLocaleString()}</td>
                     <td>${log.method}</td>
-                    <td>${new Date(log.date).toLocaleDateString()}</td>
-                    <td>${log.status}</td>
-                    <td>${actions}</td>
+                    <td>${log.date}</td>
+                    <td style="color: ${statusColor};">${log.status}</td>
+                    <td>${actionButton}</td>
                 `;
-                table.appendChild(row);
             });
         }
+        
+        function openFinancialActionModal(logId) {
+            const log = globalData.financials.find(f => f.id === logId);
+            const user = findUser(log.userId) || { username: 'N/A' };
+            
+            document.getElementById('financialActionTitle').textContent = `Process ${log.type} Request`;
+            document.getElementById('reqId').textContent = log.id;
+            document.getElementById('reqUser').textContent = user.username;
+            document.getElementById('reqType').textContent = log.type;
+            document.getElementById('reqAmount').textContent = `K${log.amount.toLocaleString()}`;
+            document.getElementById('reqMethod').textContent = log.method;
+            document.getElementById('executeFinancialAction').dataset.logId = log.id;
+            
+            showModal('financialActionModal');
+        }
 
-        // Admin Settings
+        document.getElementById('executeFinancialAction').addEventListener('click', function() {
+            const logId = parseInt(this.dataset.logId);
+            const status = document.getElementById('financialStatusAction').value;
+            executeFinancialAction(logId, status);
+            hideModal('financialActionModal');
+        });
+
+        function executeFinancialAction(logId, newStatus) {
+            const log = globalData.financials.find(f => f.id === logId);
+            const user = findUser(log.userId);
+
+            if (!log || !user || log.status !== 'Pending') return;
+
+            if (newStatus === 'Approved') {
+                if (log.type === 'Deposit') {
+                    user.balance += log.amount;
+                } else if (log.type === 'Withdrawal') {
+                    // Check balance again before final withdrawal
+                    if (user.balance >= log.amount) {
+                        user.balance -= log.amount;
+                    } else {
+                        newStatus = 'Rejected';
+                        alert(`Withdrawal rejected: Insufficient balance for user ${user.username} (K${log.amount.toLocaleString()} requested, K${user.balance.toLocaleString()} available).`);
+                    }
+                }
+            }
+
+            log.status = newStatus;
+
+            // Update UI on both ends
+            if (globalData.loggedInUser.role === 'user') updateFrontendUI();
+            loadAdminFinancialLogs();
+            loadAdminDashboard();
+            loadAdminUsers(); 
+
+            alert(`Financial request #${logId} (${log.type}) updated to ${newStatus}. User ${user.username} balance updated.`);
+        }
+
+        function loadSettings() {
+            document.getElementById('taxRateInput').value = globalData.settings.taxRate;
+            document.getElementById('telegramUrlInput').value = globalData.settings.telegramUrl;
+            document.getElementById('viberUrlInput').value = globalData.settings.viberUrl;
+            loadSupportSettings();
+        }
+
+        document.getElementById('saveTaxSettings').addEventListener('click', function() {
+            const newRate = parseInt(document.getElementById('taxRateInput').value);
+            if (newRate >= 0 && newRate <= 100) {
+                globalData.settings.taxRate = newRate;
+                alert(`Tax rate set to ${newRate}%.`);
+            } else {
+                alert('Invalid tax rate.');
+            }
+        });
+
         document.getElementById('saveSupportSettings').addEventListener('click', function() {
             globalData.settings.telegramUrl = document.getElementById('telegramUrlInput').value;
             globalData.settings.viberUrl = document.getElementById('viberUrlInput').value;
-            telegramLink.href = globalData.settings.telegramUrl;
-            viberLink.href = globalData.settings.viberUrl;
-            alert('Support chat links saved and updated.');
-        });
-        
-        // Tax Settings
-        document.getElementById('saveTaxSettings').addEventListener('click', function() {
-            const newTaxRate = parseFloat(document.getElementById('taxRateInput').value);
-            if (isNaN(newTaxRate) || newTaxRate < 0 || newTaxRate > 100) {
-                alert('Please enter a valid tax rate between 0 and 100.');
-                return;
-            }
-            
-            globalData.taxRate = newTaxRate;
-            alert(`Tax rate updated to ${newTaxRate}%. (${formatMMK(10000)} = ${formatMMK(calculateTax(10000))} tax)`);
-        });
-        
-        // Admin Chart Initialization (As per your provided code)
-        let revenueChartInstance, dailyReportChartInstance;
-        function initializeAdminCharts() {
-            if (revenueChartInstance) revenueChartInstance.destroy();
-            if (dailyReportChartInstance) dailyReportChartInstance.destroy();
-            
-            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-            revenueChartInstance = new Chart(revenueCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                    datasets: [{
-                        label: 'Revenue ('+CURRENCY_SYMBOL+')',
-                        data: [1200000, 1900000, 1500000, 1800000, 1600000, 2200000, 2500000],
-                        borderColor: '#3498db',
-                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
-            });
-
-            const dailyReportCtx = document.getElementById('dailyReportChart').getContext('2d');
-            dailyReportChartInstance = new Chart(dailyReportCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM', '12 AM'],
-                    datasets: [
-                        { label: 'Bets Placed', data: [45, 78, 65, 92, 120, 85, 60], backgroundColor: '#3498db' },
-                        { label: 'Wins', data: [25, 45, 35, 52, 65, 40, 30], backgroundColor: '#27ae60' }
-                    ]
-                },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
-        }
-        
-        // Admin Language Switcher
-        function updateAdminLanguage() {
-            document.querySelectorAll('#adminAgentApp [data-tab]').forEach(link => {
-                const tab = link.getAttribute('data-tab');
-                const span = link.querySelector('span');
-                if (span) span.textContent = texts[currentLang][tab] || tab;
-            });
-            const activeTab = document.querySelector('#adminAgentApp .sidebar-menu a.active').getAttribute('data-tab');
-            adminPageTitle.textContent = texts[currentLang][activeTab];
-            // You would normally update all hardcoded text here too
-        }
-
-        adminLangButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                adminLangButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                currentLang = this.getAttribute('data-lang');
-                updateAdminLanguage();
-            });
+            loadSupportSettings();
+            alert('Support links updated.');
         });
 
-        // ====================================================================
-        // GLOBAL LOGIN & APP FLOW
-        // ====================================================================
 
-        const globalLoginScreen = document.getElementById('globalLoginScreen');
-        const globalLoginForm = document.getElementById('globalLoginForm');
-        const passwordChangeModal = document.getElementById('passwordChangeModal');
-        const agreementModal = document.getElementById('agreementModal');
+        // --- Event Listeners and Initialization ---
 
-        globalLoginForm.addEventListener('submit', function(e) {
+        document.getElementById('globalLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
-            
             const user = globalData.users.find(u => u.username === username && u.password === password);
 
-            if (user) {
-                if (user.status === 'banned') {
-                    alert('Access Denied: Your account has been banned.');
-                    return;
-                }
-                
-                globalData.loggedInUser = user;
-
-                if (user.isFirstLogin) {
-                    globalLoginScreen.style.display = 'none';
-                    passwordChangeModal.style.display = 'flex';
-                } else {
-                    showAgreementModal();
-                }
-
-            } else {
-                alert('Invalid Username or Password.');
-            }
-        });
-        
-        // Password Change Logic
-        document.getElementById('saveNewPassword').addEventListener('click', function() {
-            const newPass = document.getElementById('newPassword').value;
-            const confirmPass = document.getElementById('confirmPassword').value;
-            
-            if (newPass.length < 6) {
-                alert('Password must be at least 6 characters.');
+            if (!user) {
+                alert('Invalid username or password.');
                 return;
             }
-            if (newPass !== confirmPass) {
-                alert('Passwords do not match.');
-                return;
-            }
-            
-            globalData.loggedInUser.password = newPass;
-            globalData.loggedInUser.isFirstLogin = false;
-            passwordChangeModal.style.display = 'none';
-            alert('Password changed successfully! You will now proceed to the Terms & Conditions.');
-            showAgreementModal();
-        });
 
-        // Agreement Modal Logic
-        function showAgreementModal() {
-            // Show Agreement Modal before proceeding to app
+            globalData.loggedInUser = user;
             globalLoginScreen.style.display = 'none';
-            passwordChangeModal.style.display = 'none';
-            agreementModal.style.display = 'flex';
-        }
 
-        document.getElementById('rejectAgreement').addEventListener('click', function() {
-            alert('You must accept the Terms & Conditions to proceed. Logging out.');
-            logout();
+            if (user.firstLogin && user.role !== 'admin') { // Admin first login is handled differently/ignored for simplicity
+                showModal('passwordChangeModal');
+                return;
+            }
+
+            showModal('agreementModal');
         });
 
         document.getElementById('acceptAgreement').addEventListener('click', function() {
-            agreementModal.style.display = 'none';
-            
+            hideModal('agreementModal');
             const user = globalData.loggedInUser;
-            
+
             if (user.role === 'admin' || user.role === 'agent') {
                 globalData.isAdmin = user.role === 'admin';
                 globalData.isAgent = user.role === 'agent';
                 adminAgentApp.style.display = 'flex';
                 userFrontendApp.style.display = 'none';
-                initializeAdminCharts();
                 initializeAdminPanel();
             } else {
                 globalData.isAdmin = false;
@@ -1821,7 +2032,28 @@
             }
         });
 
-        // Logout Function
+        document.getElementById('rejectAgreement').addEventListener('click', function() {
+            alert('You must accept the terms and conditions to proceed.');
+        });
+
+        document.getElementById('saveNewPassword').addEventListener('click', function() {
+            const newPass = document.getElementById('newPassword').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+            if (newPass !== confirmPass) {
+                alert('Passwords do not match.');
+                return;
+            }
+            if (newPass.length < 5) {
+                alert('Password must be at least 5 characters.');
+                return;
+            }
+
+            globalData.loggedInUser.password = newPass;
+            globalData.loggedInUser.firstLogin = false;
+            hideModal('passwordChangeModal');
+            showModal('agreementModal');
+        });
+
         function logout() {
             globalData.loggedInUser = null;
             globalData.isAdmin = false;
@@ -1833,16 +2065,60 @@
             document.getElementById('loginUsername').value = '';
             document.getElementById('loginPassword').value = '';
             supportOptions.style.display = 'none';
+            if (revenueChart) revenueChart.destroy();
         }
 
         frontendLogoutBtn.addEventListener('click', logout);
         adminLogoutBtn.addEventListener('click', logout);
+        
+        supportIcon.addEventListener('click', () => {
+            supportOptions.style.display = supportOptions.style.display === 'flex' ? 'none' : 'flex';
+        });
 
-        // Initial Load
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                const tabId = this.getAttribute('data-tab');
+                const targetTab = document.getElementById(tabId);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                    document.getElementById('adminPageTitle').textContent = this.querySelector('span').textContent;
+                    // Re-run the appropriate load function for the selected tab
+                    if (tabId === 'userManagement') loadAdminUsers();
+                    if (tabId === 'oddManagement') loadAdminOdds();
+                    if (tabId === 'agentManagement') loadAdminAgents();
+                    if (tabId === 'bettingLogs') loadAdminBettingLogs();
+                    if (tabId === 'financialLogsAdmin') loadAdminFinancialLogs();
+                    if (tabId === 'dashboard') loadAdminDashboard();
+                }
+            });
+        });
+
+        // Tabs logic inside Admin Panel content
+        document.querySelectorAll('.card-body .tabs .tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const parentCard = this.closest('.card');
+                parentCard.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                parentCard.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(this.getAttribute('data-subtab')).classList.add('active');
+            });
+        });
+
+        // Admin Action Button Listeners
+        document.getElementById('addUserBtn').addEventListener('click', () => openUserActionModal(null));
+        document.getElementById('addOddBtn').addEventListener('click', () => openOddActionModal(null));
+        document.getElementById('addAgentBtn').addEventListener('click', () => openAgentActionModal(null));
+        document.getElementById('refreshBetsBtn').addEventListener('click', loadAdminBettingLogs);
+
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Display the login screen first
             globalLoginScreen.style.display = 'flex';
-            // Pre-populate agents for 'Add User' modal
             populateAgentSelect('userActionAgent');
         });
     </script>
